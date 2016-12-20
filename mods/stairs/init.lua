@@ -106,6 +106,20 @@ function stairs.register_stair(subname, recipeitem, groups, images, description,
 				{recipeitem, recipeitem, recipeitem},
 			},
 		})
+
+		-- Fuel
+		local baseburntime = minetest.get_craft_result({
+			method = "fuel",
+			width = 1,
+			items = {recipeitem}
+		}).time
+		if baseburntime > 0 then
+			minetest.register_craft({
+				type = "fuel",
+				recipe = 'stairs:stair_' .. subname,
+				burntime = math.floor(baseburntime * 0.75),
+			})
+		end
 	end
 end
 
@@ -207,6 +221,20 @@ function stairs.register_slab(subname, recipeitem, groups, images, description, 
 				{recipeitem, recipeitem, recipeitem},
 			},
 		})
+
+		-- Fuel
+		local baseburntime = minetest.get_craft_result({
+			method = "fuel",
+			width = 1,
+			items = {recipeitem}
+		}).time
+		if baseburntime > 0 then
+			minetest.register_craft({
+				type = "fuel",
+				recipe = 'stairs:slab_' .. subname,
+				burntime = math.floor(baseburntime * 0.5),
+			})
+		end
 	end
 end
 
@@ -473,7 +501,7 @@ stairs.register_stair_and_slab(
 	{"default_steel_block.png"},
 	"Steel Block Stair",
 	"Steel Block Slab",
-	default.node_sound_stone_defaults()
+	default.node_sound_metal_defaults()
 )
 
 stairs.register_stair_and_slab(
@@ -483,7 +511,7 @@ stairs.register_stair_and_slab(
 	{"default_copper_block.png"},
 	"Copper Block Stair",
 	"Copper Block Slab",
-	default.node_sound_stone_defaults()
+	default.node_sound_metal_defaults()
 )
 
 stairs.register_stair_and_slab(
@@ -493,7 +521,7 @@ stairs.register_stair_and_slab(
 	{"default_bronze_block.png"},
 	"Bronze Block Stair",
 	"Bronze Block Slab",
-	default.node_sound_stone_defaults()
+	default.node_sound_metal_defaults()
 )
 
 stairs.register_stair_and_slab(
@@ -503,5 +531,5 @@ stairs.register_stair_and_slab(
 	{"default_gold_block.png"},
 	"Gold Block Stair",
 	"Gold Block Slab",
-	default.node_sound_stone_defaults()
+	default.node_sound_metal_defaults()
 )
