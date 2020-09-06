@@ -126,8 +126,12 @@ minetest.register_globalstep(function(dtime)
 				end
 				if controls.LMB then
 					player_set_animation(player, "walk_mine", animation_speed_mod)
+				elseif controls.sneak then
+					player_set_animation(player, "sneak", animation_speed_mod)
+					--~ minetest.chat_send_all("sneaking")
 				else
 					player_set_animation(player, "walk", animation_speed_mod)
+					--~ minetest.chat_send_all("walking")
 				end
 			elseif controls.LMB then
 				player_set_animation(player, "mine")

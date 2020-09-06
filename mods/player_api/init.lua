@@ -9,6 +9,7 @@ player_api.register_model("character.b3d", {
 		stand     = {x = 0,   y = 79},
 		lay       = {x = 162, y = 166},
 		walk      = {x = 168, y = 187},
+		sneak     = {x = 221, y = 240},
 		mine      = {x = 189, y = 198},
 		walk_mine = {x = 200, y = 219},
 		sit       = {x = 81,  y = 160},
@@ -24,7 +25,8 @@ minetest.register_on_joinplayer(function(player)
 	player_api.set_model(player, "character.b3d")
 	player:set_local_animation(
 		{x = 0,   y = 79},
-		{x = 168, y = 187},
+		--~ {x = 168, y = 187},
+		nil,
 		{x = 189, y = 198},
 		{x = 200, y = 219},
 		30
